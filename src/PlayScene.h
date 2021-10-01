@@ -31,7 +31,7 @@ private:
 	glm::vec2 m_mousePosition;
 	Target* m_pTarget;
 
-	glm::vec2 vel = glm::vec2(400.0f, 100.0f); // (vel.x, vel.y)
+	glm::vec2 vel = glm::vec2(100.0f, 100.0f); // (vel.x, vel.y)
 	float startingX = 0.0f;
 	float startingY = 300.0f;
 	glm::vec2 startPos = glm::vec2(startingX, startingY);
@@ -45,7 +45,7 @@ private:
 	float launchElevationAngle = 250; //Angle In Degrees
 	float b = launchElevationAngle;
 
-	float accelerationGravity = 1.0f;
+	float accelerationGravity = -1.0f;
 	float c = accelerationGravity;
 
 

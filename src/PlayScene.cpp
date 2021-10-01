@@ -47,16 +47,45 @@ void PlayScene::update()
 
 	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_SPACE))
 	{
+		float displacementX = pow(startPos.x, 2); // a^2
+		float displacementY = pow(startPos.y, 2); // b^2
+		float totalDisplacement = sqrt(displacementX + displacementY);
+		float velo = totalDisplacement / t;
+		std::cout << "Displacement: " << totalDisplacement << ", Velocity: " << velo << std::endl;
+		// Created Velocity Veriable
+		// now tht we have velocity
+		// we can find acceleration
+		// Acceleration = V / t
+		float acceleration = velo / t;
 		// get velocity vector
-		vel.y = startPos.y + launchSpeed * sin(launchElevationAngle)*t;
-		vel.x = startPos.x + launchSpeed * cos(launchElevationAngle)*t;
-
+		// x = speed cos (angle)
+		// y = speed sin (angle)
+		vel.x = startPos.x + launchSpeed * cos(launchElevationAngle)*t;	// * t ensures it moves accourding to delta time
+		vel.y = startPos.y + launchSpeed * sin(launchElevationAngle) * t + acceleration;
+		// Created velocity Vector
 		// now that we have the velocity vector,
-		// what do we need now?
+		// WE can find the velocity
+		// V = d/t Velocity = Displacement over time
+		// so whats the displacement for Vf - Vi
+		// so Vf = vel and Vi = 0,0
+		// V = vel
+		// tf = 5 and ti = 0
+		// t = 5
+		// So vel/5 = velocity
+		// but a^2 + b^2 = displacement
+		// a^2 = vel.x
+		// b^2 = vel.y
+
+
+		// t = 
+
+
+
+
 
 
 		m_pTarget->getTransform()->position = glm::vec2(vel);
-		std::cout << "X: " << vel.x << " Y: " << vel.y << std::endl;
+		/*std::cout << "X: " << vel.x << " Y: " << vel.y << std::endl;*/
 		//Launch the Projectile
 		// Press Space Bar to Launch the Target Sprite by constructing 
 		// an initial velocity vector for the sprite 
@@ -99,7 +128,7 @@ void PlayScene::start()
 
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);
-	m_pBackButton->getTransform()->position = glm::vec2(300.0f, 400.0f);
+	m_pBackButton->getTransform()->position = glm::vec2(50.0f, 600.0f);
 	m_pBackButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pBackButton->setActive(false);
@@ -119,7 +148,7 @@ void PlayScene::start()
 
 	// Next Button
 	m_pNextButton = new Button("../Assets/textures/nextButton.png", "nextButton", NEXT_BUTTON);
-	m_pNextButton->getTransform()->position = glm::vec2(500.0f, 400.0f);
+	m_pNextButton->getTransform()->position = glm::vec2(700.0f, 600.0f);
 	m_pNextButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pNextButton->setActive(false);
