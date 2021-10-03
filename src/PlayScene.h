@@ -25,27 +25,24 @@ public:
 
 private:
 	// IMGUI Function
-	void GUI_Function() const;
+	void GUI_Function();
 	std::string m_guiTitle;
 	
 	glm::vec2 m_mousePosition;
 	Target* m_pTarget;
 
 	glm::vec2 vel = glm::vec2(100.0f, 100.0f); // (vel.x, vel.y)
-	float startingX = 0.0f;
-	float startingY = 300.0f;
-	glm::vec2 startPos = glm::vec2(startingX, startingY);
+	glm::vec2 startPos = glm::vec2(100.0f, 300.0f);
 
 	float t;
-	float d = t;
 
-	float launchSpeed = 10.0f;
+	float launchSpeed = 100.0f;
 	float a = launchSpeed;
 
-	float launchElevationAngle = 250; //Angle In Degrees
+	float launchElevationAngle = 400; //Angle In Degrees
 	float b = launchElevationAngle;
 
-	float accelerationGravity = -1.0f;
+	float accelerationGravity = 1.0f;
 	float c = accelerationGravity;
 
 
